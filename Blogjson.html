@@ -21,14 +21,21 @@
 							text += "<p style='background-color:lightgray'>";
 						}
 						text += "<strong>" + records[i].data + "</strong><br>";
+						text += records[i].message + "</p>";
 					}
+					document.getElementById("recordsplace").innerHTML = text;
 				}
-			}
+			};
+
+			var message = document.getElementById("message").value;
+			request.open("POST", "Blogjson.jsp?message=" + message, true);
+			request.send(null);
 		}
 	</script>
 	</head>
-	<body>
+	<body onload="send()">
+		<input type="text" id="message" />
+		<input type="button" value="send" onclick="send()"><br>
+		<div id="recordsplace"></div>
 	</body>
 </html>
-
-<!-- Дописать программу!!!! -->
