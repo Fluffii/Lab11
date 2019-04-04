@@ -2,6 +2,15 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>My Blog</title>
+	<style type="text/css">
+		p {
+			border: 1px solid #000;
+			margin: 4px 300px 0 0;
+		}
+		#message {
+			margin: 0 0 5px 0;
+		}
+	</style>
 	<script>
 		function send () {
 			var request;
@@ -15,18 +24,33 @@
 					var records = eval('(' + request.responseText + ')');
 					var text = "";
 					for (var i = 0; i < records.length; i++) {
-						if (i%2 == 0) {
-							text += "<p style='background-color:gray'>";
-						} else {
-							text += "<p style='background-color:lightgray'>";
+						if (i%7 == 0) {
+							text += "<p style='background-color:red'>";
 						}
+						if (i%7 == 1) {
+							text += "<p style='background-color:orange'>";
+						} 
+						if (i%7 == 2) {
+							text += "<p style='background-color:yellow'>";
+						} 
+						if (i%7 == 3) {
+							text += "<p style='background-color:#98FB98'>"
+						} 
+						if (i%7 == 4) {
+							text += "<p style='background-color:#87CEFA'>";
+						} 
+						if (i%7 == 5) {
+							text += "<p style='background-color:#1E90FF'>";
+						} 
+						if (i%7 == 6) {
+							text += "<p style='background-color:#EE82EE'>";
+						} 
 						text += "<strong>" + records[i].data + "</strong><br>";
 						text += records[i].message + "</p>";
 					}
 					document.getElementById("recordsplace").innerHTML = text;
 				}
 			};
-
 			var message = document.getElementById("message").value;
 			request.open("POST", "Blogjson.jsp?message=" + message, true);
 			request.send(null);
