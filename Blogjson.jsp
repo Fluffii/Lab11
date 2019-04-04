@@ -1,8 +1,9 @@
 <%@ page import="java.util.*"%>
+<%@ page pageEncoding="UTF-8" %>
 
 <%!
 	class Record {
-		Date date;
+		Date data;
 		String message;
 		Record(Date data, String message){
 			this.data = data;
